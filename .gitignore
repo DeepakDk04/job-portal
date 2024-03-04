@@ -119,3 +119,4 @@ Octotree
 
 backend/public/profile/*
 backend/public/resume/*
+.env

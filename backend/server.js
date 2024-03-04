@@ -5,8 +5,7 @@ const passportConfig = require("./lib/passportConfig");
 const cors = require("cors");
 const fs = require("fs");
 
-const credURI =
-  "mongodb+srv://testuser144:rei3ls0e4l1@jobportal.zlegz7w.mongodb.net/?retryWrites=true&w=majority";
+const credURI = process.env.credURI;
 // MongoDB
 mongoose
   .connect(credURI, {
