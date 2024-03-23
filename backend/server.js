@@ -1,3 +1,6 @@
+const dotenv = require("dotenv");
+// dotenv.config({ path: "./.env" });
+dotenv.config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -5,7 +8,7 @@ const passportConfig = require("./lib/passportConfig");
 const cors = require("cors");
 const fs = require("fs");
 
-const credURI = process.env.credURI;
+const credURI = process.env.CRED_URI;
 // MongoDB
 mongoose
   .connect(credURI, {
