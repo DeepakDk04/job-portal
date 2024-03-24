@@ -1,6 +1,7 @@
 const express = require("express");
 const multer = require("multer");
 const fs = require("fs");
+const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 const { promisify } = require("util");
 
@@ -11,6 +12,7 @@ const router = express.Router();
 const upload = multer();
 
 router.post("/resume", upload.single("file"), (req, res) => {
+  console.log("req", req);
   const { file } = req;
   if (file.detectedFileExtension != ".pdf") {
     res.status(400).json({
@@ -18,11 +20,8 @@ router.post("/resume", upload.single("file"), (req, res) => {
     });
   } else {
     const filename = `${uuidv4()}${file.detectedFileExtension}`;
-
-    pipeline(
-      file.stream,
-      fs.createWriteStream(`${__dirname}/../public/resume/${filename}`)
-    )
+    const filePath = path.join(__dirname, `/../public/resume/${filename}`);
+    pipeline(file.stream, fs.createWriteStream(filePath))
       .then(() => {
         res.send({
           message: "File uploaded successfully",
@@ -30,6 +29,7 @@ router.post("/resume", upload.single("file"), (req, res) => {
         });
       })
       .catch((err) => {
+        console.log("er", err);
         res.status(400).json({
           message: "Error while uploading",
         });
