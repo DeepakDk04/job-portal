@@ -233,10 +233,12 @@ const Login = (props) => {
           console.log(response);
         })
         .catch((err) => {
+          console.log("err", err);
+          console.log("Error", err.Error);
           setPopup({
             open: true,
             severity: "error",
-            message: err.response.data.message,
+            message: "Something unexpected happed, Please try again later",
           });
           console.log(err.response);
         });
@@ -408,7 +410,8 @@ const Login = (props) => {
                 }
               />
             </Grid>
-            <Grid item>
+            {/* FIXME: removed file upload feature */}
+            {/* <Grid item>
               <FileUploadInput
                 className={classes.inputBox}
                 label="Resume (.pdf)"
@@ -441,7 +444,7 @@ const Login = (props) => {
                 handleInput={handleInput}
                 identifier={"profile"}
               />
-            </Grid>
+            </Grid> */}
           </>
         ) : (
           <>
