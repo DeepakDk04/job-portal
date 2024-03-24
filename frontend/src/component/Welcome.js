@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, Box } from "@material-ui/core";
 
 const Welcome = (props) => {
   return (
@@ -11,7 +11,18 @@ const Welcome = (props) => {
       style={{ padding: "30px", minHeight: "93vh" }}
     >
       <Grid item>
-        <Typography variant="h2">Welcome to Job Portal</Typography>
+        <Box>
+          <Typography variant="h2">Welcome to</Typography>
+          <Typography variant="h3" color="secondary">
+            <b>Job Portal</b>
+          </Typography>
+        </Box>
+        <Box>
+          <Typography variant="h5" align="center" color="text.secondary">
+            A Bridge to Job Seekers and Recruiters to connect in a single
+            platform.
+          </Typography>
+        </Box>
       </Grid>
     </Grid>
   );
